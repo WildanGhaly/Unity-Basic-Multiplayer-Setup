@@ -433,7 +433,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 33462834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1877679322}
+        m_TargetAssemblyTypeName: LoadGameCanvas, Assembly-CSharp
+        m_MethodName: SlotClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &33462834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +566,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 38228636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1877679322}
+        m_TargetAssemblyTypeName: LoadGameCanvas, Assembly-CSharp
+        m_MethodName: LoadClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &38228636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3530,7 +3554,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536098095}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1877679322}
+        m_TargetAssemblyTypeName: LoadGameCanvas, Assembly-CSharp
+        m_MethodName: SlotClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &536098095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5938,7 +5974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &970294972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7452,7 +7488,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1274356896}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1877679322}
+        m_TargetAssemblyTypeName: LoadGameCanvas, Assembly-CSharp
+        m_MethodName: DeleteClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1274356896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8052,7 +8100,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1391203803}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1877679322}
+        m_TargetAssemblyTypeName: LoadGameCanvas, Assembly-CSharp
+        m_MethodName: SlotClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1391203803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10037,7 +10097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1856264988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10149,6 +10209,7 @@ GameObject:
   - component: {fileID: 1877679321}
   - component: {fileID: 1877679320}
   - component: {fileID: 1877679319}
+  - component: {fileID: 1877679322}
   m_Layer: 0
   m_Name: LoadGame Canvas
   m_TagString: Untagged
@@ -10243,6 +10304,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1877679322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877679317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 659c932766628744d88c13076da712a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainMenuCanvas: {fileID: 1856264987}
+  _slotList: {fileID: 56651011}
 --- !u!1 &1879452144
 GameObject:
   m_ObjectHideFlags: 0
@@ -10974,7 +11049,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2032561915}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1877679322}
+        m_TargetAssemblyTypeName: LoadGameCanvas, Assembly-CSharp
+        m_MethodName: SlotClick
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2032561915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11404,7 +11491,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2129933485}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1877679322}
+        m_TargetAssemblyTypeName: LoadGameCanvas, Assembly-CSharp
+        m_MethodName: BackClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2129933485
 MonoBehaviour:
   m_ObjectHideFlags: 0
