@@ -10,21 +10,17 @@ public class InputManager : NetworkBehaviour
     private PlayerMovement motor;
     private PlayerLook look;
 
-    void Awake()
-    {
-        inputAction = new PlayerInput();
-        onFoot = inputAction.OnFoot;
-    }
+    [SerializeField] private GameObject cameraHolder;
 
     public override void OnNetworkSpawn()
     {
-        base.OnNetworkSpawn();
-
         if (!IsOwner)
         {
-            Debug.Log("Not the owner, skipping initialization.");
+            cameraHolder.SetActive(false);
             return;
         }
+        inputAction = new PlayerInput();
+        onFoot = inputAction.OnFoot;
 
         motor = GetComponent<PlayerMovement>();
         look = GetComponent<PlayerLook>();
@@ -36,8 +32,6 @@ public class InputManager : NetworkBehaviour
 
     public override void OnNetworkDespawn()
     {
-        base.OnNetworkDespawn();
-
         if (IsOwner)
         {
             onFoot.Disable();

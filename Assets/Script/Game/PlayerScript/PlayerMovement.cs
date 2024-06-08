@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     private CharacterController controller;
     [SerializeField] private float speed = 3f;
@@ -13,23 +14,25 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerVelocity;
     private Transform t;
 
-    private void Awake()
+    public override void OnNetworkSpawn()
     {
-        t = transform;
-    }
+        if (!IsOwner) return;
 
-    void Start()
-    {
+        t = transform;
         controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
+        if (!IsOwner) return;
+
         isGrounded = controller.isGrounded;
     }
 
     public void ProcessMove(Vector2 input)
     {
+        if (!IsOwner) return;
+
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y;
@@ -45,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
+        if (!IsOwner) return;
+
         if (isGrounded)
         {
             playerVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);

@@ -13,6 +13,8 @@ public class PlayerLook : NetworkBehaviour
 
     public void ProcessLook(Vector2 input)
     {
+        if (!IsOwner) return;
+
         float vertical = ySensitivity * input.y * Time.deltaTime;
         float horizontal = xSensitivity * input.x * Time.deltaTime;
 
