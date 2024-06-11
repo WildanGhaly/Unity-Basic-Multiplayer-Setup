@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode;
+using Mirror;
 using UnityEngine;
 
 public class PlayerMovement : NetworkBehaviour
@@ -14,24 +14,22 @@ public class PlayerMovement : NetworkBehaviour
     private Vector3 playerVelocity;
     private Transform t;
 
-    public override void OnNetworkSpawn()
+    private void Awake()
     {
-        if (!IsOwner) return;
-
         t = transform;
         controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        if (!IsOwner) return;
+        if (!isLocalPlayer) return;
 
         isGrounded = controller.isGrounded;
     }
 
     public void ProcessMove(Vector2 input)
     {
-        if (!IsOwner) return;
+        if (!isLocalPlayer) return;
 
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
@@ -48,7 +46,7 @@ public class PlayerMovement : NetworkBehaviour
 
     public void Jump()
     {
-        if (!IsOwner) return;
+        if (!isLocalPlayer) return;
 
         if (isGrounded)
         {

@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode;
+using Mirror;
 using UnityEngine;
 
 public class PlayerLook : NetworkBehaviour
@@ -13,7 +13,7 @@ public class PlayerLook : NetworkBehaviour
 
     public void ProcessLook(Vector2 input)
     {
-        if (!IsOwner) return;
+        if (!isLocalPlayer) return;
 
         float vertical = ySensitivity * input.y * Time.deltaTime;
         float horizontal = xSensitivity * input.x * Time.deltaTime;
