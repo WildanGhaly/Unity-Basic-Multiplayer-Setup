@@ -14,6 +14,7 @@ public class InputManager : NetworkBehaviour
 
     private void Awake()
     {
+
         inputAction = new PlayerInput();
         onFoot = inputAction.OnFoot;
 
@@ -23,6 +24,12 @@ public class InputManager : NetworkBehaviour
         onFoot.Jump.performed += ctx => motor.Jump();
 
         Debug.Log("InputManager started and input actions initialized.");
+        
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        cameraHolder.SetActive(true);
     }
 
     private void OnEnable()
