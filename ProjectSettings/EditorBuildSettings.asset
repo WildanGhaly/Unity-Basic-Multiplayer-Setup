@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/UI Scene/Main Menu.unity
     guid: c4a7a63c3725606448615cce698ab98d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game Scene/EarlyGame.unity
     guid: 7cef8e4b9e61b864dbb9bacceeb15f5e
+  - enabled: 1
+    path: Assets/Scenes/Game Scene/SteamSample.unity
+    guid: e8f7d067df24c7041ae0d1b98c4fe2b8
   m_configObjects: {}
