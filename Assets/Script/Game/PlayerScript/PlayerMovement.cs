@@ -13,11 +13,22 @@ public class PlayerMovement : NetworkBehaviour
     private bool isGrounded;
     private Vector3 playerVelocity;
     private Transform t;
+    private Animator playerAnimator;
+
+    private bool
+        isStrafingRight,
+        isStrafingLeft,
+        isWalkingBack,
+        isWalkingForward,
+        isIdle,
+        isRunning,
+        isRunningTriggered;
 
     private void Awake()
     {
         t = transform;
         controller = GetComponent<CharacterController>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -36,6 +47,63 @@ public class PlayerMovement : NetworkBehaviour
         moveDirection.z = input.y;
         controller.Move(speed * Time.deltaTime * t.TransformDirection(moveDirection));
 
+        if (moveDirection.x < 0 && !isWalkingBack)
+        {
+            isStrafingRight = false;
+            isStrafingLeft = false;
+            isWalkingBack = true;
+            isWalkingForward = false;
+            isIdle = false;
+            isRunning = false;
+            isRunningTriggered = false;
+            playerAnimator.SetTrigger("TriggerRunningBack");
+        }
+        else if (moveDirection.x == 0 && moveDirection.z > 0 && !isStrafingRight)
+        {
+            isStrafingRight = true;
+            isStrafingLeft = false;
+            isWalkingBack = false;
+            isWalkingForward = false;
+            isIdle = false;
+            isRunning = false;
+            isRunningTriggered = false;
+            playerAnimator.SetTrigger("TriggerWalkingRight");
+        }
+        else if (moveDirection.x == 0 && moveDirection.z < 0 && !isStrafingLeft)
+        {
+            isStrafingRight = false;
+            isStrafingLeft = true;
+            isWalkingBack = false;
+            isWalkingForward = false;
+            isIdle = false;
+            isRunning = false;
+            isRunningTriggered = false;
+            playerAnimator.SetTrigger("TriggerWalkingLeft");
+        }
+        else if (moveDirection.x > 0 && !isWalkingForward && !isRunning)
+        {
+            isStrafingRight = false;
+            isStrafingLeft = false;
+            isWalkingBack = false;
+            isWalkingForward = true;
+            isIdle = false;
+            isRunning = false;
+            isRunningTriggered = false;
+            playerAnimator.SetTrigger("TriggerWalking");
+        }
+        else if (isRunning && !isRunningTriggered)
+        {
+            isStrafingRight = false;
+            isStrafingLeft = false;
+            isWalkingBack = false;
+            isWalkingForward = false;
+            isIdle = false;
+            isRunning = false;
+            isRunningTriggered = true;
+            isRunningTriggered = false;
+            playerAnimator.SetTrigger("TriggerRunning");
+        }
+
         playerVelocity.y += gravity * Time.deltaTime;
         if (isGrounded && playerVelocity.y < 0)
         {
@@ -51,6 +119,8 @@ public class PlayerMovement : NetworkBehaviour
         if (isGrounded)
         {
             playerVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
+            if (isRunning) playerAnimator.SetTrigger("TriggerJumpRun");
+            else playerAnimator.SetTrigger("TriggerJump");
         }
     }
 }
