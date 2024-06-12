@@ -76,7 +76,7 @@ public class PlayerMovement : NetworkBehaviour
     public void Jump()
     {
         if (!isLocalPlayer) return;
-
+        Debug.Log("Jump pressed");
         if (isGrounded)
         {
             playerVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
