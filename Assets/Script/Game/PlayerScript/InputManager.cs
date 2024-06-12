@@ -11,6 +11,7 @@ public class InputManager : NetworkBehaviour
     private PlayerLook look;
 
     [SerializeField] private GameObject cameraHolder;
+    [SerializeField] private GameObject playerModel;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class InputManager : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         cameraHolder.SetActive(true);
+        playerModel.SetActive(false);
     }
 
     private void OnEnable()
