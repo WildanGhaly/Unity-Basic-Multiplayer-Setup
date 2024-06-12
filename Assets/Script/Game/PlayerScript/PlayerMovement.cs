@@ -110,8 +110,11 @@ public class PlayerMovement : NetworkBehaviour
 
     public void TriggerCrouch()
     {
+        // Disable crouch for now
+        /*
         if (isCrouching) StopCrouch(); 
         else StartCrouch();
+        */
     }
 
     private void StartCrouch()
