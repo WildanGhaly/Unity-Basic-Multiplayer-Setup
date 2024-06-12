@@ -8,8 +8,9 @@ public class PlayerMovement : NetworkBehaviour
     private CharacterController controller;
     private float speed;
     
-    [SerializeField] private float sprintSpeed = 5f;
-    [SerializeField] private float normalSpeed = 3f;
+    [SerializeField] private float sprintSpeed = 8f;
+    [SerializeField] private float normalSpeed = 5f;
+    [SerializeField] private float crouchSpeed = 3f;
 
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private float gravity = -9.8f;
@@ -20,6 +21,7 @@ public class PlayerMovement : NetworkBehaviour
     private Animator playerAnimator;
 
     private bool isRunning;
+    private bool isCrouching;
 
     private void Awake()
     {
@@ -45,7 +47,11 @@ public class PlayerMovement : NetworkBehaviour
         moveDirection.z = input.y;
         controller.Move(speed * Time.deltaTime * t.TransformDirection(moveDirection));
 
-        if (isRunning && moveDirection.z > 0)
+        if (isCrouching && moveDirection != Vector3.zero)
+        {
+            UpdateMovementAnimation(6);
+        }
+        else if (isRunning && moveDirection.z > 0)
         {
             UpdateMovementAnimation(2);
         }
@@ -102,6 +108,26 @@ public class PlayerMovement : NetworkBehaviour
         speed = normalSpeed;
     }
 
+    public void TriggerCrouch()
+    {
+        if (isCrouching) StopCrouch(); 
+        else StartCrouch();
+    }
+
+    private void StartCrouch()
+    {
+        isCrouching = true;
+        speed = crouchSpeed;
+        playerAnimator.SetTrigger("TriggerCrouch");
+    }
+
+    private void StopCrouch()
+    {
+        isCrouching = false;
+        speed = normalSpeed;
+        playerAnimator.SetTrigger("TriggerCrouchToStand");
+    }
+
     private void UpdateMovementAnimation(int id)
     {
         playerAnimator.SetBool("IsWalkForward", false);
@@ -109,6 +135,7 @@ public class PlayerMovement : NetworkBehaviour
         playerAnimator.SetBool("IsWalkLeft", false);
         playerAnimator.SetBool("IsWalkRight", false);
         playerAnimator.SetBool("IsWalkBackward", false);
+        playerAnimator.SetBool("IsCrouchWalking", false);
 
         switch (id)
         {
@@ -127,6 +154,9 @@ public class PlayerMovement : NetworkBehaviour
                 return;
             case 5:
                 playerAnimator.SetBool("IsWalkBackward", true);
+                return;
+            case 6:
+                playerAnimator.SetBool("IsCrouchWalking", true);
                 return;
         }
 
