@@ -15,14 +15,7 @@ public class PlayerMovement : NetworkBehaviour
     private Transform t;
     private Animator playerAnimator;
 
-    private bool
-        isStrafingRight,
-        isStrafingLeft,
-        isWalkingBack,
-        isWalkingForward,
-        isIdle,
-        isRunning,
-        isRunningTriggered;
+    private bool isRunning;
 
     private void Awake()
     {
@@ -47,61 +40,29 @@ public class PlayerMovement : NetworkBehaviour
         moveDirection.z = input.y;
         controller.Move(speed * Time.deltaTime * t.TransformDirection(moveDirection));
 
-        if (moveDirection.x < 0 && !isWalkingBack)
+        if (isRunning)
         {
-            isStrafingRight = false;
-            isStrafingLeft = false;
-            isWalkingBack = true;
-            isWalkingForward = false;
-            isIdle = false;
-            isRunning = false;
-            isRunningTriggered = false;
-            playerAnimator.SetTrigger("TriggerRunningBack");
+            UpdateMovementAnimation(2);
         }
-        else if (moveDirection.x == 0 && moveDirection.z > 0 && !isStrafingRight)
+        else if (moveDirection.z > 0)
         {
-            isStrafingRight = true;
-            isStrafingLeft = false;
-            isWalkingBack = false;
-            isWalkingForward = false;
-            isIdle = false;
-            isRunning = false;
-            isRunningTriggered = false;
-            playerAnimator.SetTrigger("TriggerWalkingRight");
+            UpdateMovementAnimation(1);
         }
-        else if (moveDirection.x == 0 && moveDirection.z < 0 && !isStrafingLeft)
+        else if (moveDirection.z < 0)
         {
-            isStrafingRight = false;
-            isStrafingLeft = true;
-            isWalkingBack = false;
-            isWalkingForward = false;
-            isIdle = false;
-            isRunning = false;
-            isRunningTriggered = false;
-            playerAnimator.SetTrigger("TriggerWalkingLeft");
+            UpdateMovementAnimation(5);
         }
-        else if (moveDirection.x > 0 && !isWalkingForward && !isRunning)
+        else if (moveDirection.x < 0)
         {
-            isStrafingRight = false;
-            isStrafingLeft = false;
-            isWalkingBack = false;
-            isWalkingForward = true;
-            isIdle = false;
-            isRunning = false;
-            isRunningTriggered = false;
-            playerAnimator.SetTrigger("TriggerWalking");
+            UpdateMovementAnimation(3);
         }
-        else if (isRunning && !isRunningTriggered)
+        else if (moveDirection.x > 0)
         {
-            isStrafingRight = false;
-            isStrafingLeft = false;
-            isWalkingBack = false;
-            isWalkingForward = false;
-            isIdle = false;
-            isRunning = false;
-            isRunningTriggered = true;
-            isRunningTriggered = false;
-            playerAnimator.SetTrigger("TriggerRunning");
+            UpdateMovementAnimation(4);
+        }
+        else
+        {
+            UpdateMovementAnimation(0);
         }
 
         playerVelocity.y += gravity * Time.deltaTime;
@@ -122,5 +83,35 @@ public class PlayerMovement : NetworkBehaviour
             if (isRunning) playerAnimator.SetTrigger("TriggerJumpRun");
             else playerAnimator.SetTrigger("TriggerJump");
         }
+    }
+
+    private void UpdateMovementAnimation(int id)
+    {
+        playerAnimator.SetBool("IsWalkForward", false);
+        playerAnimator.SetBool("IsSprinting", false);
+        playerAnimator.SetBool("IsWalkLeft", false);
+        playerAnimator.SetBool("IsWalkRight", false);
+        playerAnimator.SetBool("IsWalkBackward", false);
+
+        switch (id)
+        {
+            case 1:
+                playerAnimator.SetBool("IsWalkForward", true);
+                return;
+            case 2:
+                playerAnimator.SetBool("IsWalkForward", true);
+                playerAnimator.SetBool("IsSprinting", true);
+                return;
+            case 3:
+                playerAnimator.SetBool("IsWalkLeft", true);
+                return;
+            case 4:
+                playerAnimator.SetBool("IsWalkRight", true);
+                return;
+            case 5:
+                playerAnimator.SetBool("IsWalkBackward", true);
+                return;
+        }
+
     }
 }
