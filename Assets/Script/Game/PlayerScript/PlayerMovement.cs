@@ -6,7 +6,11 @@ using UnityEngine;
 public class PlayerMovement : NetworkBehaviour
 {
     private CharacterController controller;
-    [SerializeField] private float speed = 3f;
+    private float speed;
+    
+    [SerializeField] private float sprintSpeed = 5f;
+    [SerializeField] private float normalSpeed = 3f;
+
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private float gravity = -9.8f;
 
@@ -19,6 +23,7 @@ public class PlayerMovement : NetworkBehaviour
 
     private void Awake()
     {
+        speed = normalSpeed;
         t = transform;
         controller = GetComponent<CharacterController>();
         playerAnimator = GetComponent<Animator>();
@@ -40,7 +45,7 @@ public class PlayerMovement : NetworkBehaviour
         moveDirection.z = input.y;
         controller.Move(speed * Time.deltaTime * t.TransformDirection(moveDirection));
 
-        if (isRunning)
+        if (isRunning && moveDirection.z > 0)
         {
             UpdateMovementAnimation(2);
         }
@@ -83,6 +88,18 @@ public class PlayerMovement : NetworkBehaviour
             if (isRunning) playerAnimator.SetTrigger("TriggerJumpRun");
             else playerAnimator.SetTrigger("TriggerJump");
         }
+    }
+
+    public void StartSprint()
+    {
+        isRunning = true;
+        speed = sprintSpeed;
+    }
+
+    public void StopSprint()
+    {
+        isRunning = false;
+        speed = normalSpeed;
     }
 
     private void UpdateMovementAnimation(int id)

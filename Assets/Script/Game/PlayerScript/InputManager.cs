@@ -24,6 +24,9 @@ public class InputManager : NetworkBehaviour
 
         onFoot.Jump.performed += ctx => motor.Jump();
 
+        onFoot.Sprint.performed += ctx => motor.StartSprint();
+        onFoot.Sprint.canceled += ctx => motor.StopSprint();
+
         Debug.Log("InputManager started and input actions initialized.");
         
     }
