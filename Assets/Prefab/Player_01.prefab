@@ -1135,7 +1135,7 @@ GameObject:
   - component: {fileID: 8077839853987241316}
   - component: {fileID: 3775168011335649166}
   - component: {fileID: 3296311036788065874}
-  - component: {fileID: 2177130967772542952}
+  - component: {fileID: 2187922405361797378}
   m_Layer: 0
   m_Name: Player_01
   m_TagString: Player
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &2177130967772542952
+--- !u!114 &2187922405361797378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3678628184000363471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a553cb17010b2403e8523b558bffbc14, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 1
@@ -1394,11 +1394,10 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  bufferResetMultiplier: 3
-  changedDetection: 1
-  positionSensitivity: 0.01
+  onlySyncOnChangeCorrectionMultiplier: 2
   rotationSensitivity: 0.01
-  scaleSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &4253257941083394539
 GameObject:
   m_ObjectHideFlags: 0
