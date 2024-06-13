@@ -96,18 +96,24 @@ public class PlayerMovement : NetworkBehaviour
 
     public void StartSprint()
     {
+        if (!isLocalPlayer) return;
+
         isRunning = true;
         speed = sprintSpeed;
     }
 
     public void StopSprint()
     {
+        if (!isLocalPlayer) return;
+
         isRunning = false;
         speed = normalSpeed;
     }
 
     public void TriggerCrouch()
     {
+        if (!isLocalPlayer) return;
+
         // Disable crouch for now
         /*
         if (isCrouching) StopCrouch(); 
