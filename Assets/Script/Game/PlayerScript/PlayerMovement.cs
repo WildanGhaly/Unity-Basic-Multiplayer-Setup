@@ -21,7 +21,7 @@ public class PlayerMovement : NetworkBehaviour
     private bool isRunning;
     private bool isCrouching;
 
-    private void Awake()
+    public override void OnStartLocalPlayer()
     {
         speed = normalSpeed;
         t = transform;

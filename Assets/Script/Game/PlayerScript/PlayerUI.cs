@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Mirror;
 
-public class PlayerUI : MonoBehaviour
+public class PlayerUI : NetworkBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI promptMessage;
 
-    private void Awake()
+    public override void OnStartLocalPlayer()
     {
         if (!promptMessage)
         {
@@ -18,6 +19,8 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateText(string text)
     {
+        if (!isLocalPlayer) return;
+
         promptMessage.text = text;
     }
 }

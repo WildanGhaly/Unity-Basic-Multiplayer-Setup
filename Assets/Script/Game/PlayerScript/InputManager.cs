@@ -13,9 +13,8 @@ public class InputManager : NetworkBehaviour
     [SerializeField] private GameObject cameraHolder;
     [SerializeField] private GameObject playerModel;
 
-    private void Awake()
+    public override void OnStartLocalPlayer()
     {
-
         inputAction = new PlayerInput();
         onFoot = inputAction.OnFoot;
 
@@ -30,23 +29,11 @@ public class InputManager : NetworkBehaviour
         onFoot.Crouch.performed += ctx => motor.TriggerCrouch();
 
         Debug.Log("InputManager started and input actions initialized.");
-        
-    }
 
-    public override void OnStartLocalPlayer()
-    {
         cameraHolder.SetActive(true);
         playerModel.SetActive(false);
-    }
 
-    private void OnEnable()
-    {
         onFoot.Enable();
-    }
-
-    private void OnDisable()
-    {
-        onFoot.Disable();
     }
 
     void FixedUpdate()
