@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private TextMeshProUGUI promptMessage;
+
+    private void Awake()
     {
-        
+        if (!promptMessage)
+        {
+            promptMessage = GameObject.FindGameObjectWithTag("InteractionUI").GetComponent<TextMeshProUGUI>();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateText(string text)
     {
-        
+        promptMessage.text = text;
     }
 }

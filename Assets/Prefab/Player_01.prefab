@@ -1222,6 +1222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c426cc0f909fb7e4a83ca49614ec5869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  distance: 3
 --- !u!114 &2995008170874492361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1272,6 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5a248d16a1cc94683d74bbf37626c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  promptMessage: {fileID: 0}
 --- !u!143 &9168989537571514284
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1379,7 +1384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 248824409
+  GlobalObjectIdHash: 2597437823
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
