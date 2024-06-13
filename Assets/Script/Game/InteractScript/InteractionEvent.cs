@@ -1,7 +1,7 @@
 using UnityEngine.Events;
-using UnityEngine;
+using Mirror;
 
-public class InteractionEvent : MonoBehaviour
+public class InteractionEvent : NetworkBehaviour
 {
     public UnityEvent unityEvent;
 }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class PlayerInteract : MonoBehaviour
+public class PlayerInteract : NetworkBehaviour
 {
     private Camera cam;
     [SerializeField]
@@ -21,6 +22,8 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
+        if (!isLocalPlayer) return;
+
         playerUI.UpdateText(string.Empty);
         Ray ray = new(cam.transform.position, cam.transform.forward);
         Debug.DrawRay(cam.transform.position, cam.transform.forward);

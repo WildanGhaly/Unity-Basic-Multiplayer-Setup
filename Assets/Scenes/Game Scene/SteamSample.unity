@@ -346,6 +346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088566eafacbb1e4983a093587770b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   eventInteract: 0
   promptMessage: Monyet Muter
 --- !u!95 &368180901
