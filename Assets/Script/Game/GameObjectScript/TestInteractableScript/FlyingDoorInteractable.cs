@@ -8,7 +8,7 @@ public class FlyingDoorAnimator : Interactable
 
     private bool isOpen;
 
-    public override void OnStartLocalPlayer()
+    private void Awake()
     {
         selfAnimator = GetComponent<Animator>();
     }

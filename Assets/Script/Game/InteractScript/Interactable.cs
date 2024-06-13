@@ -9,8 +9,6 @@ public abstract class Interactable : NetworkBehaviour
     public string promptMessage = "Interactable";
     public void BaseInteract()
     {
-        if (!isLocalPlayer) return;
-
         if (eventInteract)
         {
             GetComponent<InteractionEvent>().unityEvent.Invoke();

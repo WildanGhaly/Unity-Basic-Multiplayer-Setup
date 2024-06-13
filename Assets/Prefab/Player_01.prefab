@@ -1265,7 +1265,7 @@ MonoBehaviour:
   sprintSpeed: 8
   normalSpeed: 5
   crouchSpeed: 3
-  jumpHeight: 2
+  jumpHeight: 9.8
   gravity: -9.8
 --- !u!114 &4984964192485195892
 MonoBehaviour:
@@ -1279,6 +1279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5a248d16a1cc94683d74bbf37626c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   promptMessage: {fileID: 0}
 --- !u!143 &9168989537571514284
 CharacterController:

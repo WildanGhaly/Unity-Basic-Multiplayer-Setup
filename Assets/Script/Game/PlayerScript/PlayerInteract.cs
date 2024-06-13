@@ -35,6 +35,7 @@ public class PlayerInteract : NetworkBehaviour
                 playerUI.UpdateText(interactable.promptMessage);
                 if (inputManager.onFoot.Interact.triggered)
                 {
+                    Debug.Log("Interact Triggered");
                     interactable.BaseInteract();
                 }
             }

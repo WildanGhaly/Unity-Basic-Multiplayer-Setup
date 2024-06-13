@@ -839,7 +839,7 @@ MonoBehaviour:
   autoStartServerBuild: 0
   autoConnectClientBuild: 0
   offlineScene: 
-  onlineScene: 
+  onlineScene: Assets/Scenes/Game Scene/SteamSample.unity
   transport: {fileID: 785331405}
   networkAddress: localhost
   maxConnections: 5
@@ -848,7 +848,7 @@ MonoBehaviour:
   authenticator: {fileID: 0}
   playerPrefab: {fileID: 3678628184000363471, guid: e3a6e78152ed0d847a095a8121527c77, type: 3}
   autoCreatePlayer: 1
-  playerSpawnMethod: 0
+  playerSpawnMethod: 1
   spawnPrefabs: []
   exceptionsDisconnect: 1
   snapshotSettings:
