@@ -387,7 +387,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 1
   syncInterval: 0
-  clientAuthority: 1
+  clientAuthority: 0
   animator: {fileID: 368180901}
 --- !u!114 &368180904
 MonoBehaviour:
