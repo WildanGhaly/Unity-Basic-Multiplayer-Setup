@@ -1,23 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using Mirror;
-using UnityEngine;
 
 public abstract class Interactable : NetworkBehaviour
 {
     public bool eventInteract;
     public string promptMessage = "Interactable";
-    public void BaseInteract()
+
+    [Server]
+    public void ServerInteract()
     {
         if (eventInteract)
         {
             GetComponent<InteractionEvent>().unityEvent.Invoke();
         }
+        RpcInteract();
+    }
+
+    [ClientRpc]
+    private void RpcInteract()
+    {
         Interact();
     }
 
     protected virtual void Interact()
     {
-
     }
 }

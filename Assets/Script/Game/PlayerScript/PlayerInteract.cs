@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Mirror;
 using UnityEngine;
+using Mirror;
 
 public class PlayerInteract : NetworkBehaviour
 {
@@ -36,9 +34,19 @@ public class PlayerInteract : NetworkBehaviour
                 if (inputManager.onFoot.Interact.triggered)
                 {
                     Debug.Log("Interact Triggered");
-                    interactable.BaseInteract();
+                    CmdInteract(interactable.netIdentity);
                 }
             }
+        }
+    }
+
+    [Command]
+    private void CmdInteract(NetworkIdentity interactableId)
+    {
+        Interactable interactable = interactableId.GetComponent<Interactable>();
+        if (interactable != null)
+        {
+            interactable.ServerInteract();
         }
     }
 }
