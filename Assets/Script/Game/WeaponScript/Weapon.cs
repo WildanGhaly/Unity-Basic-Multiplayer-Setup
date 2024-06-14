@@ -29,6 +29,7 @@ public class Weapon : MonoBehaviour
                 // Assuming the target has a PlayerHealth script
                 if (target.TryGetComponent<PlayerHealth>(out PlayerHealth health))
                 {
+                    Debug.Log("Hit a person");
                     health.TakeDamage(attackDamage);
                 }
             }
