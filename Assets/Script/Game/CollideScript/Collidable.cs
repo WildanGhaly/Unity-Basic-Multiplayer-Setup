@@ -13,7 +13,10 @@ public abstract class Collidable : NetworkBehaviour
     {
         if (IsInCollisionLayer(collision.gameObject.layer))
         {
-            BaseCollideEnter(collision);
+            if (isServer)
+            {
+                BaseCollideEnter(collision);
+            }
         }
     }
 
@@ -21,7 +24,10 @@ public abstract class Collidable : NetworkBehaviour
     {
         if (IsInCollisionLayer(collision.gameObject.layer))
         {
-            BaseCollideStay(collision);
+            if (isServer)
+            {
+                BaseCollideStay(collision);
+            }
         }
     }
 
@@ -29,7 +35,10 @@ public abstract class Collidable : NetworkBehaviour
     {
         if (IsInCollisionLayer(collision.gameObject.layer))
         {
-            BaseCollideExit(collision);
+            if (isServer)
+            {
+                BaseCollideExit(collision);
+            }
         }
     }
 
@@ -38,7 +47,8 @@ public abstract class Collidable : NetworkBehaviour
         return (collisionLayers.value & (1 << layer)) != 0;
     }
 
-    public void BaseCollideEnter(Collision collision)
+    [Server]
+    private void BaseCollideEnter(Collision collision)
     {
         if (eventCollideEnter)
         {
@@ -47,7 +57,8 @@ public abstract class Collidable : NetworkBehaviour
         CollideEnter(collision);
     }
 
-    public void BaseCollideStay(Collision collision)
+    [Server]
+    private void BaseCollideStay(Collision collision)
     {
         if (eventCollideStay)
         {
@@ -56,7 +67,8 @@ public abstract class Collidable : NetworkBehaviour
         CollideStay(collision);
     }
 
-    public void BaseCollideExit(Collision collision)
+    [Server]
+    private void BaseCollideExit(Collision collision)
     {
         if (eventCollideExit)
         {
