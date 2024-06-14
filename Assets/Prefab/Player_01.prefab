@@ -3600,5 +3600,5 @@ MonoBehaviour:
   eventCollideExit: 0
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   damage: 10
