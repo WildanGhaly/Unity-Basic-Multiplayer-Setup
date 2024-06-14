@@ -5,8 +5,6 @@ using Mirror;
 
 public class PlayerAttack : NetworkBehaviour
 {
-    [SerializeField] private Weapon meleeWeapon;
-    [SerializeField] private Weapon rangedWeapon;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileSpeed = 10f;
@@ -48,7 +46,6 @@ public class PlayerAttack : NetworkBehaviour
     {
         Debug.Log("Rpc melee attack");
         animator.SetTrigger("TriggerSword");
-        meleeWeapon.PerformAttack();
     }
 
     [Command]
@@ -63,6 +60,5 @@ public class PlayerAttack : NetworkBehaviour
         GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, attackPoint.rotation);
         projectile.GetComponent<Rigidbody>().velocity = attackPoint.forward * projectileSpeed;
         NetworkServer.Spawn(projectile);
-        rangedWeapon.PerformAttack();
     }
 }

@@ -4,11 +4,11 @@ using Mirror;
 public class PlayerHealth : NetworkBehaviour
 {
     [SyncVar(hook = nameof(OnHealthChanged))]
-    private int currentHealth;
+    private float currentHealth;
 
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private float maxHealth = 100;
 
-    public event System.Action<int, int> OnHealthChangedEvent;
+    public event System.Action<float, float> OnHealthChangedEvent;
 
     public override void OnStartLocalPlayer()
     {
@@ -25,11 +25,12 @@ public class PlayerHealth : NetworkBehaviour
     }
 
     [Server]
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (currentHealth <= 0) return;
 
         currentHealth -= amount;
+        Debug.Log("I got hit, my currentHealth is "+ currentHealth);
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -38,7 +39,7 @@ public class PlayerHealth : NetworkBehaviour
     }
 
     [Server]
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
         if (currentHealth <= 0) return;
 
@@ -49,18 +50,18 @@ public class PlayerHealth : NetworkBehaviour
         }
     }
 
-    private void OnHealthChanged(int oldHealth, int newHealth)
+    private void OnHealthChanged(float oldHealth, float newHealth)
     {
         OnHealthChangedEvent?.Invoke(newHealth, maxHealth);
         // Add additional logic for when health changes (e.g., updating UI)
     }
 
-    public int GetCurrentHealth()
+    public float GetCurrentHealth()
     {
         return currentHealth;
     }
 
-    public int GetMaxHealth()
+    public float GetMaxHealth()
     {
         return maxHealth;
     }

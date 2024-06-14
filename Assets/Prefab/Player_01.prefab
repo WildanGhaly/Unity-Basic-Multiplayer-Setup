@@ -1398,8 +1398,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  meleeWeapon: {fileID: 1730367236603739770}
-  rangedWeapon: {fileID: 1730367236603739770}
+  meleeWeapon: {fileID: 0}
+  rangedWeapon: {fileID: 0}
   attackPoint: {fileID: 7215322337039881217}
   projectilePrefab: {fileID: 8028275205342514875}
   projectileSpeed: 10
@@ -3506,10 +3506,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8384663211046332819, guid: f35679122b59888499aef7a69b391c05, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1730367236603739770}
+      addedObject: {fileID: 3866754977792998681}
     - targetCorrespondingSourceObject: {fileID: 8384663211046332819, guid: f35679122b59888499aef7a69b391c05, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3866754977792998681}
+      addedObject: {fileID: 2330281797475158473}
   m_SourcePrefab: {fileID: 100100000, guid: f35679122b59888499aef7a69b391c05, type: 3}
 --- !u!4 &7215322337039881217 stripped
 Transform:
@@ -3521,26 +3521,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8384663211046332819, guid: f35679122b59888499aef7a69b391c05, type: 3}
   m_PrefabInstance: {fileID: 1960867968639805224}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1730367236603739770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8028275205342514875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a175863625e61b34bbfbb09bfaec99e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  attackAnimationTrigger: 
-  attackRange: 1
-  attackDamage: 10
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 119
-  attackPoint: {fileID: 7215322337039881217}
 --- !u!136 &3866754977792998681
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3564,3 +3544,26 @@ CapsuleCollider:
   m_Height: 1.848236
   m_Direction: 1
   m_Center: {x: -0.0010417372, y: 0.0446682, z: -0.000000025787074}
+--- !u!114 &2330281797475158473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8028275205342514875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98ae1c5ab9afc947bb3932318f8dc02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  promptMessage: Collide
+  eventCollideEnter: 0
+  eventCollideStay: 0
+  eventCollideExit: 0
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  damage: 10
