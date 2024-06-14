@@ -13,6 +13,8 @@ public class InputManager : NetworkBehaviour
     [SerializeField] private GameObject cameraHolder;
     [SerializeField] private GameObject playerModel;
 
+    public GameObject weapon;
+
     public override void OnStartLocalPlayer()
     {
         inputAction = new PlayerInput();
@@ -31,6 +33,7 @@ public class InputManager : NetworkBehaviour
         Debug.Log("InputManager started and input actions initialized.");
 
         cameraHolder.SetActive(true);
+        weapon.SetActive(false);
         playerModel.SetActive(false);
 
         onFoot.Enable();

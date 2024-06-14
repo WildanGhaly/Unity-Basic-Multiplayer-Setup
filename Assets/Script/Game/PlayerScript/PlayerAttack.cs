@@ -12,11 +12,13 @@ public class PlayerAttack : NetworkBehaviour
 
     private Animator animator;
     private InputManager inputManager;
+    private GameObject sword;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         inputManager = GetComponent<InputManager>();
+        sword = inputManager.weapon;
     }
 
     private void Update()
@@ -46,6 +48,8 @@ public class PlayerAttack : NetworkBehaviour
     {
         Debug.Log("Rpc melee attack");
         animator.SetTrigger("TriggerSword");
+        StopAllCoroutines();
+        StartCoroutine(SwordVisibleTimer());
     }
 
     [Command]
@@ -60,5 +64,12 @@ public class PlayerAttack : NetworkBehaviour
         GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, attackPoint.rotation);
         projectile.GetComponent<Rigidbody>().velocity = attackPoint.forward * projectileSpeed;
         NetworkServer.Spawn(projectile);
+    }
+
+    IEnumerator SwordVisibleTimer()
+    {
+        sword.SetActive(true);
+        yield return new WaitForSeconds(2);
+        sword.SetActive(false);
     }
 }
