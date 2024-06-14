@@ -1394,6 +1394,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61755b93c0660c54588dd8b42722e334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  meleeWeapon: {fileID: 1730367236603739770}
+  rangedWeapon: {fileID: 1730367236603739770}
+  attackPoint: {fileID: 7215322337039881217}
+  projectilePrefab: {fileID: 8028275205342514875}
+  projectileSpeed: 10
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &4253257941083394539
 GameObject:
   m_ObjectHideFlags: 0
@@ -3468,10 +3479,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8384663211046332819, guid: f35679122b59888499aef7a69b391c05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1730367236603739770}
   m_SourcePrefab: {fileID: 100100000, guid: f35679122b59888499aef7a69b391c05, type: 3}
 --- !u!4 &7215322337039881217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9157962539563463465, guid: f35679122b59888499aef7a69b391c05, type: 3}
   m_PrefabInstance: {fileID: 1960867968639805224}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8028275205342514875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8384663211046332819, guid: f35679122b59888499aef7a69b391c05, type: 3}
+  m_PrefabInstance: {fileID: 1960867968639805224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1730367236603739770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8028275205342514875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a175863625e61b34bbfbb09bfaec99e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  attackAnimationTrigger: 
+  attackRange: 1
+  attackDamage: 10
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 119
+  attackPoint: {fileID: 7215322337039881217}
