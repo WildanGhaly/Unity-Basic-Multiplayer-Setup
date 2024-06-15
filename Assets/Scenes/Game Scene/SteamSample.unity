@@ -1560,6 +1560,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1716351092781056380, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1624488005}
+    - targetCorrespondingSourceObject: {fileID: 1716351092781056380, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1624488009}
+    - targetCorrespondingSourceObject: {fileID: 1716351092781056380, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1624488008}
   m_SourcePrefab: {fileID: 100100000, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
 --- !u!1 &1624488002 stripped
 GameObject:
@@ -1621,6 +1627,61 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!4 &1624488007 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5741476309198447077, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+  m_PrefabInstance: {fileID: 1624488001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1624488008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624488002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 1624488007}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  sendIntervalMultiplier: 1
+  timelineOffset: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
+--- !u!114 &1624488009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624488002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92b4705a12caac488a8281a2edb27d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  checkInterval: 0.5
 --- !u!1 &1908185311
 GameObject:
   m_ObjectHideFlags: 0
