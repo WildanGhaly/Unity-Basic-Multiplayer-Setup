@@ -1511,6 +1511,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2053974612269536551, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053974612269536551, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898723828735881671, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+      propertyPath: attackRange
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5741476309198447077, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.43

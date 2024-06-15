@@ -17,15 +17,13 @@ public class EnemyMovement : NetworkBehaviour
     private bool isAttacking;
     private Animator enemyAnimator;
 
-    void Start()
+    public override void OnStartServer()
     {
-        enemyAnimator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyAttack = GetComponent<EnemyAttack>();
-        if (isServer)
-        {
-            StartCoroutine(UpdateTarget());
-        }
+        enemyAnimator = GetComponent<Animator>();
+
+        StartCoroutine(UpdateTarget());
     }
 
     IEnumerator UpdateTarget()
