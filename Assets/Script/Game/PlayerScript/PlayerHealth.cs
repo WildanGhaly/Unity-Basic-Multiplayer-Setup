@@ -10,22 +10,13 @@ public class PlayerHealth : NetworkBehaviour
 
     public event System.Action<float, float> OnHealthChangedEvent;
 
-    public override void OnStartLocalPlayer()
+    private void Awake()
     {
-        if (isServer)
-        {
-            currentHealth = maxHealth;
-        }
-    }
-
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
         currentHealth = maxHealth;
     }
 
-    [Server]
-    public void TakeDamage(float amount)
+    [Command]
+    public void CmdTakeDamage(float amount)
     {
         if (currentHealth <= 0) return;
 
@@ -38,8 +29,8 @@ public class PlayerHealth : NetworkBehaviour
         }
     }
 
-    [Server]
-    public void Heal(float amount)
+    [Command]
+    public void CmdHeal(float amount)
     {
         if (currentHealth <= 0) return;
 

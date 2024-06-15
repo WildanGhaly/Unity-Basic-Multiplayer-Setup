@@ -15,17 +15,23 @@ public class PlayerAttack : NetworkBehaviour
     private GameObject sword;
 
     [SerializeField] private float maxAttackPerSecond = 2f;
+    [SerializeField] private float meleeAttackRange = 1f;
+    [SerializeField] private float attackDamage = 10f;
 
     private float currentTime;
     private float resetTime;
 
-    private void Start()
+    private void Awake()
     {
         currentTime = 0;
         resetTime = 1f / maxAttackPerSecond;
         
         animator = GetComponent<Animator>();
         inputManager = GetComponent<InputManager>();
+    }
+
+    private void Start()
+    {
         sword = inputManager.weapon;
     }
 
@@ -40,7 +46,7 @@ public class PlayerAttack : NetworkBehaviour
             if (currentTime < resetTime) return;
 
             currentTime = 0;
-            CmdMeleeAttack();
+            LocalMeleeAttack();
         }
 
         if (inputManager.onFoot.RangedAttack.triggered)
@@ -52,13 +58,38 @@ public class PlayerAttack : NetworkBehaviour
         }
     }
 
+    private void LocalMeleeAttack()
+    {
+        StopAllCoroutines();
+        StartCoroutine(SwordVisibleTimer());
+        CmdMeleeAttack();
+    }
+
     [Command]
     private void CmdMeleeAttack()
     {
         Debug.Log("Command melee attack");
         animator.SetTrigger("TriggerSword");
-        StopAllCoroutines();
-        StartCoroutine(SwordVisibleTimer());
+        PerformMeleeAttack();
+        
+    }
+
+    private void PerformMeleeAttack()
+    {
+        if (meleeAttackRange > 0)
+        {
+            Collider[] hitTargets = Physics.OverlapSphere(attackPoint.position, meleeAttackRange, targetMask);
+
+            foreach (var target in hitTargets)
+            {
+                // Assuming the target has a PlayerHealth script
+                if (target.TryGetComponent<PlayerHealth>(out PlayerHealth health))
+                {
+                    Debug.Log("Hit a person");
+                    health.CmdTakeDamage(attackDamage);
+                }
+            }
+        }
     }
 
     [Command]

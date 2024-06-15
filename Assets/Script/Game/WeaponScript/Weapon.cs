@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Weapon : MonoBehaviour
+public class Weapon : NetworkBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private string attackAnimationTrigger;
@@ -30,7 +31,7 @@ public class Weapon : MonoBehaviour
                 if (target.TryGetComponent<PlayerHealth>(out PlayerHealth health))
                 {
                     Debug.Log("Hit a person");
-                    health.TakeDamage(attackDamage);
+                    health.CmdTakeDamage(attackDamage);
                 }
             }
         }
@@ -39,7 +40,6 @@ public class Weapon : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
-        Debug.Log("I am here");
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }

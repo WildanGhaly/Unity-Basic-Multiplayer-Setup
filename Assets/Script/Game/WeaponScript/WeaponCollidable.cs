@@ -15,7 +15,7 @@ public class WeaponCollidable : Collidable
         if (targetHealth != null)
         {
             Debug.Log("HIT!!!");
-            targetHealth.TakeDamage(damage);
+            targetHealth.CmdTakeDamage(damage);
         }
     }
 }
