@@ -11,6 +11,7 @@ public abstract class Collidable : NetworkBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Something touch me");
         if (IsInCollisionLayer(collision.gameObject.layer))
         {
             if (isServer)
@@ -22,6 +23,7 @@ public abstract class Collidable : NetworkBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        Debug.Log("Something touch me2");
         if (IsInCollisionLayer(collision.gameObject.layer))
         {
             if (isServer)
@@ -33,6 +35,7 @@ public abstract class Collidable : NetworkBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        Debug.Log("Something touch me3");
         if (IsInCollisionLayer(collision.gameObject.layer))
         {
             if (isServer)

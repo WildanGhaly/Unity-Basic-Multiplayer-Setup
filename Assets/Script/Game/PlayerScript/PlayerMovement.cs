@@ -21,7 +21,7 @@ public class PlayerMovement : NetworkBehaviour
     private bool isRunning;
     private bool isCrouching;
 
-    public override void OnStartLocalPlayer()
+    private void Awake()
     {
         speed = normalSpeed;
         t = transform;
@@ -31,19 +31,18 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
-        if (!isLocalPlayer) return;
+        if (!isServer) return;
 
         isGrounded = controller.isGrounded;
     }
 
-    public void ProcessMove(Vector2 input)
+    [Command]
+    public void CmdProcessMove(Vector2 input)
     {
-        if (!isLocalPlayer) return;
-
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = input.x;
         moveDirection.z = input.y;
-        controller.Move(speed * Time.deltaTime * t.TransformDirection(moveDirection));
+        controller.Move(speed * Time.fixedDeltaTime * t.TransformDirection(moveDirection));
 
         if (isCrouching && moveDirection != Vector3.zero)
         {
@@ -82,9 +81,9 @@ public class PlayerMovement : NetworkBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
-    public void Jump()
+    [Command]
+    public void CmdJump()
     {
-        if (!isLocalPlayer) return;
         Debug.Log("Jump pressed");
         if (isGrounded)
         {
@@ -94,26 +93,23 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    public void StartSprint()
+    [Command]
+    public void CmdStartSprint()
     {
-        if (!isLocalPlayer) return;
-
         isRunning = true;
         speed = sprintSpeed;
     }
 
-    public void StopSprint()
+    [Command]
+    public void CmdStopSprint()
     {
-        if (!isLocalPlayer) return;
-
         isRunning = false;
         speed = normalSpeed;
     }
 
-    public void TriggerCrouch()
+    [Command]
+    public void CmdTriggerCrouch()
     {
-        if (!isLocalPlayer) return;
-
         // Disable crouch for now
         /*
         if (isCrouching) StopCrouch(); 

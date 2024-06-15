@@ -15,7 +15,7 @@ public class InputManager : NetworkBehaviour
 
     public GameObject weapon;
 
-    public override void OnStartLocalPlayer()
+    private void Awake()
     {
         inputAction = new PlayerInput();
         onFoot = inputAction.OnFoot;
@@ -23,27 +23,30 @@ public class InputManager : NetworkBehaviour
         motor = GetComponent<PlayerMovement>();
         look = GetComponent<PlayerLook>();
 
-        onFoot.Jump.performed += ctx => motor.Jump();
+        onFoot.Enable();
+    }
 
-        onFoot.Sprint.performed += ctx => motor.StartSprint();
-        onFoot.Sprint.canceled += ctx => motor.StopSprint();
+    public override void OnStartLocalPlayer()
+    {
+        onFoot.Jump.performed += ctx => motor.CmdJump();
 
-        onFoot.Crouch.performed += ctx => motor.TriggerCrouch();
+        onFoot.Sprint.performed += ctx => motor.CmdStartSprint();
+        onFoot.Sprint.canceled += ctx => motor.CmdStopSprint();
+
+        onFoot.Crouch.performed += ctx => motor.CmdTriggerCrouch();
 
         Debug.Log("InputManager started and input actions initialized.");
 
         cameraHolder.SetActive(true);
         weapon.SetActive(false);
-        playerModel.SetActive(false);
-
-        onFoot.Enable();
+        // playerModel.SetActive(false);
     }
 
     void FixedUpdate()
     {
         if (!isLocalPlayer) return;
 
-        motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+        motor.CmdProcessMove(onFoot.Movement.ReadValue<Vector2>());
     }
 
     private void LateUpdate()
