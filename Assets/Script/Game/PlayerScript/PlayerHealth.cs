@@ -43,6 +43,8 @@ public class PlayerHealth : NetworkBehaviour
     private void DeathAnimation()
     {
         GetComponent<Animator>().SetTrigger("TriggerDeath");
+        GetComponent<CapsuleCollider>().enabled = false;
+        GetComponent<CharacterController>().enabled = false;
         if (isLocalPlayer)
         {
             GetComponent<InputManager>().onFoot.Disable();
