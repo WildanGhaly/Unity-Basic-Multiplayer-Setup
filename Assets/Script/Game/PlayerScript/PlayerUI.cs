@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Mirror;
 
-public class PlayerUI : MonoBehaviour
+public class PlayerUI : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private TextMeshProUGUI promptMessage;
+
+    public override void OnStartLocalPlayer()
     {
-        
+        if (!promptMessage)
+        {
+            promptMessage = GameObject.FindGameObjectWithTag("InteractionUI").GetComponent<TextMeshProUGUI>();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateText(string text)
     {
-        
+        if (!isLocalPlayer) return;
+
+        promptMessage.text = text;
     }
 }
