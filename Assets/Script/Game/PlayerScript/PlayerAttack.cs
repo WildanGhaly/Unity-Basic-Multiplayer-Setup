@@ -69,9 +69,14 @@ public class PlayerAttack : NetworkBehaviour
     private void CmdMeleeAttack()
     {
         Debug.Log("Command melee attack");
-        animator.SetTrigger("TriggerSword");
+        RpcAnimateMeleeAttack();
         PerformMeleeAttack();
-        
+    }
+
+    [ClientRpc]
+    private void RpcAnimateMeleeAttack()
+    {
+        animator.SetTrigger("TriggerSword");
     }
 
     private void PerformMeleeAttack()
