@@ -31,7 +31,7 @@ public class Weapon : NetworkBehaviour
                 if (target.TryGetComponent<PlayerHealth>(out PlayerHealth health))
                 {
                     Debug.Log("Hit a person");
-                    health.CmdTakeDamage(attackDamage);
+                    // health.CmdTakeDamage(attackDamage);
                 }
             }
         }

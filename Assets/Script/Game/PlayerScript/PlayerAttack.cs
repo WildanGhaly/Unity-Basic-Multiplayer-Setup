@@ -87,10 +87,13 @@ public class PlayerAttack : NetworkBehaviour
 
             foreach (var target in hitTargets)
             {
-                // Assuming the target has a PlayerHealth script
-                if (target.TryGetComponent<PlayerHealth>(out PlayerHealth health))
+                if (target.gameObject == gameObject) continue;
+
+                // Target always have Health script
+                if (target.TryGetComponent(out PlayerHealth health))
                 {
                     Debug.Log("Hit a person");
+
                     health.CmdTakeDamage(attackDamage);
                 }
             }

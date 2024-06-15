@@ -15,17 +15,38 @@ public class PlayerHealth : NetworkBehaviour
         currentHealth = maxHealth;
     }
 
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdTakeDamage(float amount)
+    {
+        RpcTakeDamage(amount);
+    }
+
+    [ClientRpc]
+    private void RpcTakeDamage(float amount)
+    {
+        TakeDamage(amount);
+    }
+
+    private void TakeDamage(float amount)
     {
         if (currentHealth <= 0) return;
 
         currentHealth -= amount;
-        Debug.Log("I got hit, my currentHealth is "+ currentHealth);
+        Debug.Log("I got hit, my currentHealth is " + currentHealth);
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            // Add additional logic for player death if needed
+            DeathAnimation();
+        }
+    }
+
+    private void DeathAnimation()
+    {
+        GetComponent<Animator>().SetTrigger("TriggerDeath");
+        if (isLocalPlayer)
+        {
+            GetComponent<InputManager>().onFoot.Disable();
+            GetComponent<InputManager>().enabled = false;
         }
     }
 
