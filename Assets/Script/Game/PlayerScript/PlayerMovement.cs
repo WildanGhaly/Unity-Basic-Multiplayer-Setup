@@ -73,12 +73,12 @@ public class PlayerMovement : NetworkBehaviour
             UpdateMovementAnimation(0);
         }
 
-        playerVelocity.y += gravity * Time.deltaTime;
+        playerVelocity.y += gravity * Time.fixedDeltaTime;
         if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = -2f;
         }
-        controller.Move(playerVelocity * Time.deltaTime);
+        controller.Move(playerVelocity * Time.fixedDeltaTime);
     }
 
     [Command]
