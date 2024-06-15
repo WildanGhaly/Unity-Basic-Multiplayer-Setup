@@ -26,6 +26,7 @@ public class EnemyHealth : Health
 
     protected override void DeathAnimation()
     {
+        GetComponent<CapsuleCollider>().enabled = false;
         Debug.Log("Enemy Death Animation Play");
     }
 
