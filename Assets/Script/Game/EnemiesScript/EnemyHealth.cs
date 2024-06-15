@@ -1,7 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 
-public class PlayerHealth : Health
+public class EnemyHealth : Health
 {
     protected override void Awake()
     {
@@ -25,14 +26,8 @@ public class PlayerHealth : Health
 
     protected override void DeathAnimation()
     {
-        GetComponent<Animator>().SetTrigger("TriggerDeath");
         GetComponent<CapsuleCollider>().enabled = false;
-        GetComponent<CharacterController>().enabled = false;
-        if (isLocalPlayer)
-        {
-            GetComponent<InputManager>().onFoot.Disable();
-            GetComponent<InputManager>().enabled = false;
-        }
+        Debug.Log("Enemy Death Animation Play");
     }
 
     protected override void RpcTakeHeal(float amount)
