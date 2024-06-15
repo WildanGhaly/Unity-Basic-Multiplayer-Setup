@@ -39,7 +39,7 @@ public class InputManager : NetworkBehaviour
 
         cameraHolder.SetActive(true);
         weapon.SetActive(false);
-        // playerModel.SetActive(false);
+        playerModel.SetActive(false);
     }
 
     void FixedUpdate()

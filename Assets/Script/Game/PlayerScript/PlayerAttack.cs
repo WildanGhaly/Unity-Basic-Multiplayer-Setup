@@ -14,8 +14,16 @@ public class PlayerAttack : NetworkBehaviour
     private InputManager inputManager;
     private GameObject sword;
 
+    [SerializeField] private float maxAttackPerSecond = 2f;
+
+    private float currentTime;
+    private float resetTime;
+
     private void Start()
     {
+        currentTime = 0;
+        resetTime = 1f / maxAttackPerSecond;
+        
         animator = GetComponent<Animator>();
         inputManager = GetComponent<InputManager>();
         sword = inputManager.weapon;
@@ -25,13 +33,21 @@ public class PlayerAttack : NetworkBehaviour
     {
         if (!isLocalPlayer) return;
 
+        currentTime += Time.deltaTime;
+
         if (inputManager.onFoot.MeleeAttack.triggered)
         {
+            if (currentTime < resetTime) return;
+
+            currentTime = 0;
             CmdMeleeAttack();
         }
 
         if (inputManager.onFoot.RangedAttack.triggered)
         {
+            if (currentTime < resetTime) return;
+
+            currentTime = 0;
             CmdRangedAttack();
         }
     }
@@ -40,13 +56,6 @@ public class PlayerAttack : NetworkBehaviour
     private void CmdMeleeAttack()
     {
         Debug.Log("Command melee attack");
-        RpcMeleeAttack();
-    }
-
-    [ClientRpc]
-    private void RpcMeleeAttack()
-    {
-        Debug.Log("Rpc melee attack");
         animator.SetTrigger("TriggerSword");
         StopAllCoroutines();
         StartCoroutine(SwordVisibleTimer());
@@ -69,7 +78,7 @@ public class PlayerAttack : NetworkBehaviour
     IEnumerator SwordVisibleTimer()
     {
         sword.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.7f);
         sword.SetActive(false);
     }
 }
