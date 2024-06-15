@@ -1,30 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using UnityEngine.AI;
+using System.Collections;
 
 public class EnemyMovement : NetworkBehaviour
 {
     private NavMeshAgent navMeshAgent;
+    private EnemyAttack enemyAttack;
 
     [SerializeField]
     private float checkInterval = 0.5f;
-    
+
     [SerializeField]
     private float attackRange = 2.0f;
-    
-    [SerializeField]
-    private float attackRate = 1.0f;
-
-    [SerializeField]
-    private float attackDamage = 10f;
-
-    private float nextAttackTime = 0f;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        enemyAttack = GetComponent<EnemyAttack>();
         if (isServer)
         {
             StartCoroutine(UpdateTarget());
@@ -40,10 +33,9 @@ public class EnemyMovement : NetworkBehaviour
             {
                 navMeshAgent.SetDestination(closestPlayer.position);
 
-                if (Vector3.Distance(transform.position, closestPlayer.position) <= attackRange && Time.time >= nextAttackTime)
+                if (Vector3.Distance(transform.position, closestPlayer.position) <= attackRange)
                 {
-                    Attack(closestPlayer);
-                    nextAttackTime = Time.time + 1f / attackRate;
+                    enemyAttack.Attack(closestPlayer);
                 }
             }
             yield return new WaitForSeconds(checkInterval);
@@ -67,16 +59,5 @@ public class EnemyMovement : NetworkBehaviour
         }
 
         return closestPlayer;
-    }
-
-    void Attack(Transform target)
-    {
-        Debug.Log("Attacking " + target.name);
-
-        PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            playerHealth.CmdTakeDamage(attackDamage);
-        }
     }
 }

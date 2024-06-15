@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyAttack : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float attackRate = 1.0f;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private float attackDamage = 10f;
+
+    private float nextAttackTime = 0f;
+
+    public void Attack(Transform target)
     {
-        
+        if (Time.time >= nextAttackTime)
+        {
+            Debug.Log("Attacking " + target.name);
+
+            PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.CmdTakeDamage(attackDamage);
+            }
+
+            nextAttackTime = Time.time + 1f / attackRate;
+        }
     }
 }
