@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : Health
 {
@@ -27,6 +28,25 @@ public class EnemyHealth : Health
     protected override void DeathAnimation()
     {
         GetComponent<CapsuleCollider>().enabled = false;
+
+        EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
+        if (enemyMovement)
+        {
+            enemyMovement.enabled = false;
+        }
+
+        NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
+        if (navMeshAgent)
+        {
+            navMeshAgent.enabled = false;
+        }
+        
+        Animator enemyAnimation = GetComponent<Animator>();
+        if (enemyAnimation)
+        {
+            enemyAnimation.SetTrigger("TriggerDeath");
+        }
+        
         Debug.Log("Enemy Death Animation Play");
     }
 

@@ -1438,7 +1438,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   maxAttackPerSecond: 2
-  meleeAttackRange: 1
+  meleeAttackRange: 2
   attackDamage: 10
 --- !u!136 &7135991496149139497
 CapsuleCollider:
