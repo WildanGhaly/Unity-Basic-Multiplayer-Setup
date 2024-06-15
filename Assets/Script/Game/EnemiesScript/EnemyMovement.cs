@@ -7,9 +7,20 @@ using UnityEngine.AI;
 public class EnemyMovement : NetworkBehaviour
 {
     private NavMeshAgent navMeshAgent;
-    
+
     [SerializeField]
     private float checkInterval = 0.5f;
+    
+    [SerializeField]
+    private float attackRange = 2.0f;
+    
+    [SerializeField]
+    private float attackRate = 1.0f;
+
+    [SerializeField]
+    private float attackDamage = 10f;
+
+    private float nextAttackTime = 0f;
 
     void Start()
     {
@@ -28,6 +39,12 @@ public class EnemyMovement : NetworkBehaviour
             if (closestPlayer != null)
             {
                 navMeshAgent.SetDestination(closestPlayer.position);
+
+                if (Vector3.Distance(transform.position, closestPlayer.position) <= attackRange && Time.time >= nextAttackTime)
+                {
+                    Attack(closestPlayer);
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
             }
             yield return new WaitForSeconds(checkInterval);
         }
@@ -50,5 +67,16 @@ public class EnemyMovement : NetworkBehaviour
         }
 
         return closestPlayer;
+    }
+
+    void Attack(Transform target)
+    {
+        Debug.Log("Attacking " + target.name);
+
+        PlayerHealth playerHealth = target.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.CmdTakeDamage(attackDamage);
+        }
     }
 }
