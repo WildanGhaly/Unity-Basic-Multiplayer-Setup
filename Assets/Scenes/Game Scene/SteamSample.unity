@@ -1467,8 +1467,52 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1716351092781056380, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1624488004}
+    - targetCorrespondingSourceObject: {fileID: 1716351092781056380, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1624488003}
   m_SourcePrefab: {fileID: 100100000, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+--- !u!1 &1624488002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1716351092781056380, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+  m_PrefabInstance: {fileID: 1624488001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1624488003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624488002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20da979a92c65d46a298a24023560fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  maxHealth: 100
+--- !u!114 &1624488004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624488002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 2450879417
+  _assetId: 641500138
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1908185311
 GameObject:
   m_ObjectHideFlags: 0
