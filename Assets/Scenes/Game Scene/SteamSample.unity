@@ -1507,6 +1507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyOrc
       objectReference: {fileID: 0}
+    - target: {fileID: 1716351092781056380, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5741476309198447077, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.43

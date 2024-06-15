@@ -14,8 +14,12 @@ public class EnemyMovement : NetworkBehaviour
     [SerializeField]
     private float attackRange = 2.0f;
 
+    private bool isAttacking;
+    private Animator enemyAnimator;
+
     void Start()
     {
+        enemyAnimator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyAttack = GetComponent<EnemyAttack>();
         if (isServer)
@@ -35,9 +39,16 @@ public class EnemyMovement : NetworkBehaviour
 
                 if (Vector3.Distance(transform.position, closestPlayer.position) <= attackRange)
                 {
+                    if (!isAttacking) enemyAnimator.SetTrigger("TriggerAttack");
+                    isAttacking = true;
                     enemyAttack.Attack(closestPlayer);
                 }
+                else
+                {
+                    isAttacking = false;
+                }
             }
+            enemyAnimator.SetBool("IsAttacking", isAttacking);
             yield return new WaitForSeconds(checkInterval);
         }
     }
