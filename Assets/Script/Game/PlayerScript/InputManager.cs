@@ -53,6 +53,6 @@ public class InputManager : NetworkBehaviour
     {
         if (!isLocalPlayer) return;
 
-        look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
+        look.CmdProcessLook(onFoot.Look.ReadValue<Vector2>());
     }
 }

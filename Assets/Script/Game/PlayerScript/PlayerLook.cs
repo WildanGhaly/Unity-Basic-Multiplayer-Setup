@@ -11,10 +11,9 @@ public class PlayerLook : NetworkBehaviour
     public Camera cam;
     private float tilt = 0f;
 
-    public void ProcessLook(Vector2 input)
+    [Command]
+    public void CmdProcessLook(Vector2 input)
     {
-        if (!isLocalPlayer) return;
-
         float vertical = ySensitivity * input.y * Time.deltaTime;
         float horizontal = xSensitivity * input.x * Time.deltaTime;
 
