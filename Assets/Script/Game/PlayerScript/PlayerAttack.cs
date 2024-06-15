@@ -90,7 +90,7 @@ public class PlayerAttack : NetworkBehaviour
                 if (target.gameObject == gameObject) continue;
 
                 // Target always have Health script
-                if (target.TryGetComponent(out PlayerHealth health))
+                if (target.TryGetComponent(out Health health))
                 {
                     Debug.Log("Hit a person");
 

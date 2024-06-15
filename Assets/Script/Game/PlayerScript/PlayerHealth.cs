@@ -1,46 +1,29 @@
 using UnityEngine;
 using Mirror;
 
-public class PlayerHealth : NetworkBehaviour
+public class PlayerHealth : Health
 {
-    [SyncVar(hook = nameof(OnHealthChanged))]
-    private float currentHealth;
-
-    [SerializeField] private float maxHealth = 100;
-
-    public event System.Action<float, float> OnHealthChangedEvent;
-
-    private void Awake()
+    protected override void Awake()
     {
-        currentHealth = maxHealth;
+        base.Awake();
     }
 
-    [Command(requiresAuthority = false)]
-    public void CmdTakeDamage(float amount)
+    protected override void OnHealthChanged(float oldHealth, float newHealth)
     {
-        RpcTakeDamage(amount);
+        base.OnHealthChanged(oldHealth, newHealth);
     }
 
-    [ClientRpc]
-    private void RpcTakeDamage(float amount)
+    protected override void RpcTakeDamage(float amount)
     {
-        TakeDamage(amount);
+        base.RpcTakeDamage(amount);
     }
 
-    private void TakeDamage(float amount)
+    protected override void TakeDamage(float amount)
     {
-        if (currentHealth <= 0) return;
-
-        currentHealth -= amount;
-        Debug.Log("I got hit, my currentHealth is " + currentHealth);
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            DeathAnimation();
-        }
+        base.TakeDamage(amount);
     }
 
-    private void DeathAnimation()
+    protected override void DeathAnimation()
     {
         GetComponent<Animator>().SetTrigger("TriggerDeath");
         GetComponent<CapsuleCollider>().enabled = false;
@@ -52,31 +35,13 @@ public class PlayerHealth : NetworkBehaviour
         }
     }
 
-    [Command]
-    public void CmdHeal(float amount)
+    protected override void RpcTakeHeal(float amount)
     {
-        if (currentHealth <= 0) return;
-
-        currentHealth += amount;
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
+        base.RpcTakeHeal(amount);
     }
 
-    private void OnHealthChanged(float oldHealth, float newHealth)
+    protected override void TakeHeal(float amount)
     {
-        OnHealthChangedEvent?.Invoke(newHealth, maxHealth);
-        // Add additional logic for when health changes (e.g., updating UI)
-    }
-
-    public float GetCurrentHealth()
-    {
-        return currentHealth;
-    }
-
-    public float GetMaxHealth()
-    {
-        return maxHealth;
+        base.TakeHeal(amount);
     }
 }
