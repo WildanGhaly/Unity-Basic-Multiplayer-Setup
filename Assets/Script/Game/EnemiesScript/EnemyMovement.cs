@@ -42,9 +42,13 @@ public class EnemyMovement : NetworkBehaviour
                     if (!isAttacking) enemyAnimator.SetTrigger("TriggerAttack");
                     isAttacking = true;
                     enemyAttack.Attack(closestPlayer);
+                    enemyAnimator.SetBool("IsWalking", false);
+                    enemyAnimator.SetBool("IsRunning", false);
                 }
                 else
                 {
+                    enemyAnimator.SetBool("IsWalking", true);
+                    enemyAnimator.SetBool("IsRunning", true);
                     isAttacking = false;
                 }
             }
@@ -70,5 +74,10 @@ public class EnemyMovement : NetworkBehaviour
         }
 
         return closestPlayer;
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 }
