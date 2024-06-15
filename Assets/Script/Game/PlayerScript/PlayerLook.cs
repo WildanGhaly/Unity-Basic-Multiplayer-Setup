@@ -9,19 +9,25 @@ public class PlayerLook : NetworkBehaviour
     [SerializeField] private float ySensitivity = 30f;
     
     public Camera cam;
+
     private float tilt = 0f;
 
-    [Command]
-    public void CmdProcessLook(Vector2 input)
+    public void ProcessLook(Vector2 input)
     {
         float vertical = ySensitivity * input.y * Time.deltaTime;
-        float horizontal = xSensitivity * input.x * Time.deltaTime;
 
         tilt -= vertical;
         tilt = Mathf.Clamp(tilt, -80f, 80f);
 
         cam.transform.localRotation = Quaternion.Euler(tilt, 0, 0);
 
+        CmdHorizontalLook(input.x);
+    }
+
+    [Command]
+    private void CmdHorizontalLook(float x)
+    {
+        float horizontal = xSensitivity * x * Time.deltaTime;
         transform.Rotate(Vector3.up * horizontal);
     }
 }
