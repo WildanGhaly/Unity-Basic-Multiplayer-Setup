@@ -5,17 +5,17 @@ using System.Collections;
 
 public class EnemyMovement : NetworkBehaviour
 {
-    private NavMeshAgent navMeshAgent;
-    private EnemyAttack enemyAttack;
+    protected NavMeshAgent navMeshAgent;
+    protected EnemyAttack enemyAttack;
 
     [SerializeField]
-    private float checkInterval = 0.5f;
+    protected float checkInterval = 0.5f;
 
     [SerializeField]
-    private float attackRange = 2.0f;
+    protected float attackRange = 2.0f;
 
-    private bool isAttacking;
-    private Animator enemyAnimator;
+    protected bool isAttacking;
+    protected Animator enemyAnimator;
 
     public override void OnStartServer()
     {
@@ -26,7 +26,7 @@ public class EnemyMovement : NetworkBehaviour
         StartCoroutine(UpdateTarget());
     }
 
-    IEnumerator UpdateTarget()
+    protected virtual IEnumerator UpdateTarget()
     {
         while (true)
         {
@@ -55,7 +55,7 @@ public class EnemyMovement : NetworkBehaviour
         }
     }
 
-    Transform FindClosestPlayer()
+    protected virtual Transform FindClosestPlayer()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         Transform closestPlayer = null;

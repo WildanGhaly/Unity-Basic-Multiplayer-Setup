@@ -1248,7 +1248,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  maxHealth: 100
+  maxHealth: 500
 --- !u!114 &5965168826578765795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,7 +1438,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   maxAttackPerSecond: 2
-  meleeAttackRange: 2
+  meleeAttackRange: 3
   attackDamage: 10
 --- !u!136 &7135991496149139497
 CapsuleCollider:
