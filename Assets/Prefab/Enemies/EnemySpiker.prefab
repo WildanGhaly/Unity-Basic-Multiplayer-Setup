@@ -7467,7 +7467,7 @@ GameObject:
   - component: {fileID: 3318441671983950062}
   - component: {fileID: 5914063115486845598}
   - component: {fileID: 742302882413181853}
-  - component: {fileID: 2186132850641630685}
+  - component: {fileID: 4239714706571431524}
   - component: {fileID: 6441505799389997895}
   - component: {fileID: 8367358070509514774}
   - component: {fileID: 4807508137640980588}
@@ -7542,7 +7542,7 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
---- !u!114 &2186132850641630685
+--- !u!114 &4239714706571431524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7551,13 +7551,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8541598906351695160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20da979a92c65d46a298a24023560fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 85ab7d24f358811469dff61213fe23bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
   maxHealth: 100
+  particle: {fileID: 9221332131514689042}
 --- !u!195 &6441505799389997895
 NavMeshAgent:
   m_ObjectHideFlags: 0
