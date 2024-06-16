@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class WeaponCollidable : Collidable
 {
+    /*
     [SerializeField] private float damage;
 
     protected override void CollideEnter(Collision collision)
@@ -18,4 +19,5 @@ public class WeaponCollidable : Collidable
             // targetHealth.CmdTakeDamage(damage);
         }
     }
+    */
 }

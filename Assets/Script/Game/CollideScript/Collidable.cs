@@ -9,38 +9,38 @@ public abstract class Collidable : NetworkBehaviour
     public bool eventCollideExit;
     public LayerMask collisionLayers;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Something touch me");
-        if (IsInCollisionLayer(collision.gameObject.layer))
+        Debug.Log("Something touched me");
+        if (IsInCollisionLayer(other.gameObject.layer))
         {
             if (isServer)
             {
-                BaseCollideEnter(collision);
+                RpcBaseTriggerEnter(other.gameObject);
             }
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        Debug.Log("Something touch me2");
-        if (IsInCollisionLayer(collision.gameObject.layer))
+        Debug.Log("Something is touching me");
+        if (IsInCollisionLayer(other.gameObject.layer))
         {
             if (isServer)
             {
-                BaseCollideStay(collision);
+                RpcBaseTriggerStay(other.gameObject);
             }
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Something touch me3");
-        if (IsInCollisionLayer(collision.gameObject.layer))
+        Debug.Log("Something stopped touching me");
+        if (IsInCollisionLayer(other.gameObject.layer))
         {
             if (isServer)
             {
-                BaseCollideExit(collision);
+                RpcBaseTriggerExit(other.gameObject);
             }
         }
     }
@@ -50,47 +50,47 @@ public abstract class Collidable : NetworkBehaviour
         return (collisionLayers.value & (1 << layer)) != 0;
     }
 
-    [Server]
-    private void BaseCollideEnter(Collision collision)
+    [ClientRpc]
+    private void RpcBaseTriggerEnter(GameObject other)
     {
         if (eventCollideEnter)
         {
             GetComponent<CollisionEventEnter>()?.unityEvent.Invoke();
         }
-        CollideEnter(collision);
+        TriggerEnter(other);
     }
 
-    [Server]
-    private void BaseCollideStay(Collision collision)
+    [ClientRpc]
+    private void RpcBaseTriggerStay(GameObject other)
     {
         if (eventCollideStay)
         {
             GetComponent<CollisionEventStay>()?.unityEvent.Invoke();
         }
-        CollideStay(collision);
+        TriggerStay(other);
     }
 
-    [Server]
-    private void BaseCollideExit(Collision collision)
+    [ClientRpc]
+    private void RpcBaseTriggerExit(GameObject other)
     {
         if (eventCollideExit)
         {
             GetComponent<CollisionEventExit>()?.unityEvent.Invoke();
         }
-        CollideExit(collision);
+        TriggerExit(other);
     }
 
-    protected virtual void CollideEnter(Collision collision)
+    protected virtual void TriggerEnter(GameObject other)
     {
         // Default behavior or leave empty for subclasses to override
     }
 
-    protected virtual void CollideStay(Collision collision)
+    protected virtual void TriggerStay(GameObject other)
     {
         // Default behavior or leave empty for subclasses to override
     }
 
-    protected virtual void CollideExit(Collision collision)
+    protected virtual void TriggerExit(GameObject other)
     {
         // Default behavior or leave empty for subclasses to override
     }
