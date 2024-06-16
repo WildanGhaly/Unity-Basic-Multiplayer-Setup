@@ -5549,14 +5549,14 @@ GameObject:
   - component: {fileID: 5741476309198447077}
   - component: {fileID: 176272207994902000}
   - component: {fileID: 6366797790576652014}
-  - component: {fileID: 7125966548415512991}
+  - component: {fileID: 3595310943177926690}
   - component: {fileID: 2053974612269536551}
   - component: {fileID: 2784498157174142965}
   - component: {fileID: 3848286053430240864}
   - component: {fileID: 6138526227663453052}
   - component: {fileID: 2881807710153372129}
   m_Layer: 7
-  m_Name: EnemyOrc
+  m_Name: EnemyToxicBehemoth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5619,7 +5619,7 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
---- !u!114 &7125966548415512991
+--- !u!114 &3595310943177926690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5628,7 +5628,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1716351092781056380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20da979a92c65d46a298a24023560fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 35ff931c180e08647b9831324d245879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0

@@ -4205,14 +4205,14 @@ GameObject:
   - component: {fileID: 5284803430410020714}
   - component: {fileID: 1422655383376284142}
   - component: {fileID: 6961907960393362511}
-  - component: {fileID: 2823090107370263859}
+  - component: {fileID: 6336093280143350371}
   - component: {fileID: 5186476138284243893}
   - component: {fileID: 6382936395413219385}
   - component: {fileID: 5723377076553927179}
   - component: {fileID: 7350769298479858914}
   - component: {fileID: 4493051946960113442}
   m_Layer: 7
-  m_Name: EnemyZombie
+  m_Name: EnemyMutantWorker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4227,7 +4227,7 @@ Transform:
   m_GameObject: {fileID: 6805108158535887957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5.19}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4274,7 +4274,7 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
---- !u!114 &2823090107370263859
+--- !u!114 &6336093280143350371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4283,7 +4283,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6805108158535887957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20da979a92c65d46a298a24023560fb, type: 3}
+  m_Script: {fileID: 11500000, guid: dece5b7eccebcf04c8ec272d267ab6c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
