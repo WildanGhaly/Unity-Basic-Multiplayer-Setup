@@ -1669,7 +1669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1716351092781056380, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2053974612269536551, guid: 8bd700b98dde15f48ba6436206a85cda, type: 3}
       propertyPath: m_StoppingDistance
@@ -1935,6 +1935,10 @@ PrefabInstance:
     - target: {fileID: 6805108158535887957, guid: 77541ef221f81a243b1dc4822f204c20, type: 3}
       propertyPath: m_Name
       value: EnemyZombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805108158535887957, guid: 77541ef221f81a243b1dc4822f204c20, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
