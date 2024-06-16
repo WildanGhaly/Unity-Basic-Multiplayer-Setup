@@ -7474,7 +7474,7 @@ GameObject:
   - component: {fileID: 892005327515860100}
   - component: {fileID: 8324693781579742831}
   m_Layer: 7
-  m_Name: EnemySpiker
+  m_Name: EnemyShadowSpiker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7489,7 +7489,7 @@ Transform:
   m_GameObject: {fileID: 8541598906351695160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.34, y: 0, z: -6.02}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
