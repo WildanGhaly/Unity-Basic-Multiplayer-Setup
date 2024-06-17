@@ -18,7 +18,10 @@ public class PlayerMovement : NetworkBehaviour
     private Transform t;
     private Animator playerAnimator;
 
+    [SyncVar]
     private bool isRunning;
+
+    [SyncVar]
     private bool isCrouching;
 
     private void Awake()
@@ -88,9 +91,15 @@ public class PlayerMovement : NetworkBehaviour
         if (isGrounded)
         {
             playerVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
-            if (isRunning) playerAnimator.SetTrigger("TriggerJumpRun");
-            else playerAnimator.SetTrigger("TriggerJump");
+            RpcJumpAnimation();
         }
+    }
+
+    [ClientRpc]
+    private void RpcJumpAnimation()
+    {
+        if (isRunning) playerAnimator.SetTrigger("TriggerJumpRun");
+        else playerAnimator.SetTrigger("TriggerJump");
     }
 
     [Command]
