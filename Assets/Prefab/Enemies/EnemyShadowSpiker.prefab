@@ -7473,6 +7473,7 @@ GameObject:
   - component: {fileID: 4807508137640980588}
   - component: {fileID: 892005327515860100}
   - component: {fileID: 8324693781579742831}
+  - component: {fileID: 7620037701902867763}
   m_Layer: 7
   m_Name: EnemyShadowSpiker
   m_TagString: Untagged
@@ -7672,6 +7673,23 @@ CapsuleCollider:
   m_Height: 2.3
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &7620037701902867763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541598906351695160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 5914063115486845598}
 --- !u!1 &8575785664170849253
 GameObject:
   m_ObjectHideFlags: 0
