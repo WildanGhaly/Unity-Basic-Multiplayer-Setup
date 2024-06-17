@@ -4211,6 +4211,7 @@ GameObject:
   - component: {fileID: 5723377076553927179}
   - component: {fileID: 7350769298479858914}
   - component: {fileID: 4493051946960113442}
+  - component: {fileID: 6783670538410262452}
   m_Layer: 7
   m_Name: EnemyMutantWorker
   m_TagString: Untagged
@@ -4403,6 +4404,23 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &6783670538410262452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6805108158535887957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 1422655383376284142}
 --- !u!1 &6847136205597953580
 GameObject:
   m_ObjectHideFlags: 0
