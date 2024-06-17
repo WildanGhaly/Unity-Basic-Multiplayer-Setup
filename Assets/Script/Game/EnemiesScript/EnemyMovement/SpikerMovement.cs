@@ -16,15 +16,12 @@ public class SpikerMovement : EnemyMovement
                 if (Vector3.Distance(transform.position, closestPlayer.position) <= attackRange)
                 {
                     enemyAnimator.SetTrigger("TriggerAttack");
-
                     enemyAttack.Attack(closestPlayer);
-                    enemyAnimator.SetBool("IsWalking", false);
-                    enemyAnimator.SetBool("IsRunning", false);
+                    RpcAttack();
                 }
                 else
                 {
-                    enemyAnimator.SetBool("IsWalking", true);
-                    enemyAnimator.SetBool("IsRunning", true);
+                    RpcRun();
                 }
             }
             yield return new WaitForSeconds(checkInterval);

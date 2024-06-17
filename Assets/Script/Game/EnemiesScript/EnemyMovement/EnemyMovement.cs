@@ -17,12 +17,15 @@ public class EnemyMovement : NetworkBehaviour
     protected bool isAttacking;
     protected Animator enemyAnimator;
 
-    public override void OnStartServer()
+    private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyAttack = GetComponent<EnemyAttack>();
         enemyAnimator = GetComponent<Animator>();
+    }
 
+    public override void OnStartServer()
+    {
         StartCoroutine(UpdateTarget());
     }
 
@@ -38,21 +41,34 @@ public class EnemyMovement : NetworkBehaviour
                 if (Vector3.Distance(transform.position, closestPlayer.position) <= attackRange)
                 {
                     if (!isAttacking) enemyAnimator.SetTrigger("TriggerAttack");
-                    isAttacking = true;
                     enemyAttack.Attack(closestPlayer);
-                    enemyAnimator.SetBool("IsWalking", false);
-                    enemyAnimator.SetBool("IsRunning", false);
+                    RpcAttack();
                 }
                 else
                 {
-                    enemyAnimator.SetBool("IsWalking", true);
-                    enemyAnimator.SetBool("IsRunning", true);
-                    isAttacking = false;
+                    RpcRun();
                 }
             }
             enemyAnimator.SetBool("IsAttacking", isAttacking);
             yield return new WaitForSeconds(checkInterval);
         }
+    }
+
+    [ClientRpc]
+    protected virtual void RpcAttack()
+    {
+        enemyAnimator.SetTrigger("TriggerAttack");
+        isAttacking = true;
+        enemyAnimator.SetBool("IsWalking", false);
+        enemyAnimator.SetBool("IsRunning", false);
+    }
+
+    [ClientRpc]
+    protected virtual void RpcRun()
+    {
+        isAttacking = false;
+        enemyAnimator.SetBool("IsWalking", true);
+        enemyAnimator.SetBool("IsRunning", true);
     }
 
     protected virtual Transform FindClosestPlayer()
